@@ -12,17 +12,18 @@ Plan:
 - i will implement CBOW variant (it is more straightforward/clean to implement first; but s-g w ns might perform better, especially on rare words)
 - DONE: read in dataset, tokenize
 - DONE: create matrices V, V'
-- step 3: create training process (generic loop)
+- DONE: create training process (generic loop)
 - step 4: create input * V * V' + softmax structure
 - step 5: do SGD based (cross entropy loss)
 - step 6: get embeddings
 - step 7: evaluate embeddings
 
 Non-trivial decisions I made:
-- text8 as dataset
-- exclude rare words (<5 occurences) from vocab
-- d (embedding size) set to 100
-- initialization of V and V' with small random numbers (normal(0, 0.01)) 
+- text8 as dataset (small and pre-cleaned)
+- exclude rare words (<5 occurences) from vocab (chosen arbitrarily)
+- d (embedding size) set to 100 (see Mikolov paper)
+- initialization of V and V' with small random numbers (normal(0, 0.01)) (symmetry breaking)
+- context window of 5 (see Google blogpost)
+- lr = 0.05, epochs = 3 (chosen arbitrarily)
 
-Small notes:
-- i will use a context window of 5 (https://code.google.com/archive/p/word2vec/ says this performs usually the best, and hyperparam tuning is not the point rn)
+Disclaimer: other than numpy and standard libraries, I used tqdm, as this does not help the core ML functionality (just makes the training output nicer). This library can be removed from the code without hurting functionality.
