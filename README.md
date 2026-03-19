@@ -5,7 +5,7 @@ Implement the core training loop of word2vec in pure NumPy (no PyTorch / TensorF
 Plan:
 - i will use text8 as the dataset from https://mattmahoney.net/dc/textdata.html
 - i will implement CBOW variant (it is more straightforward/clean to implement first; but s-g w ns might perform better, especially on rare words)
-- step 1: read in dataset, tokenize
+- DONE: read in dataset, tokenize
 - step 2: create matrices V, V'
 - step 3: create training process (generic loop)
 - step 4: create input * V * V' + softmax structure
