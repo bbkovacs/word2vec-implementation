@@ -7,7 +7,7 @@ def load_corpus(text8_path):
     # since this is already cleaned etc, there is not much happening here. 
     # in case this was a more "realistic" corpus, we would need more involved cleaning/tokenization too.
     with open(text8_path, "r", encoding="utf-8") as f:
-        tokens = f.read().split()
+        tokens = f.read().split()[:100000]
         
     # optimization: exclude rare words from vocabulary (smaller matrices, faster softmax)
     word_counts = Counter(tokens)
@@ -20,5 +20,4 @@ def load_corpus(text8_path):
     id_to_word = {i: word for word, i in word_to_id.items()}
     corpus_ids = [word_to_id.get(word, 0) for word in tokens] #rare words become index 0, <UNK>
     
-    
-    return vocab, corpus_ids
+    return vocab, corpus_ids, id_to_word
