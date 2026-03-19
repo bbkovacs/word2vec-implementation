@@ -7,11 +7,11 @@ def load_corpus(text8_path):
     # since this is already cleaned etc, there is not much happening here. 
     # in case this was a more "realistic" corpus, we would need more involved cleaning/tokenization too.
     with open(text8_path, "r", encoding="utf-8") as f:
-        tokens = f.read().split()
+        tokens = f.read().split()[:1000000]
         
     # optimization: exclude rare words from vocabulary (smaller matrices, faster softmax)
     word_counts = Counter(tokens)
-    min_count = 5 # this is a hyperparameter, i set it arbitrarily
+    min_count = 10 # this is a hyperparameter, i set it arbitrarily
     vocab = [word for word, count in word_counts.items() if count >= min_count]
     vocab = sorted(vocab)
     vocab = ["<UNK>"] + vocab
