@@ -10,18 +10,8 @@ Current results are subpar, as the current output.npz has only been trained on t
 
 The main training loop is found in the training.py file. 
 
-Plan:
-- i will use text8 as the dataset from https://mattmahoney.net/dc/textdata.html
-- i will implement CBOW variant (it is more straightforward/clean to implement first; but s-g w ns might perform better, especially on rare words)
-- DONE: read in dataset, tokenize
-- DONE: create matrices V, V'
-- DONE: create training process (generic loop)
-- DONE: forward pass, calculate loss
-- DONE: do backwards pass, update with SGD
-- DONE: get embeddings
-- step 7: evaluate embeddings
-
 Non-trivial decisions I made:
+- i am using the CBOW objective instead of the skip-gram
 - text8 as dataset (small and pre-cleaned)
 - exclude rare words (<5 occurences) from vocab (chosen arbitrarily)
 - d (embedding size) set to 100 (see Mikolov paper)
